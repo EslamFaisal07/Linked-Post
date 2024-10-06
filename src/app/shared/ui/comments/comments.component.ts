@@ -50,7 +50,7 @@ userImg!:any
 
  this._UsersService.getLogedUserData().subscribe({
   next: (data) => {
-    console.log(data);
+    // console.log(data);
     this.userId = data.user._id
     this.userImg = data.user.photo
 
@@ -72,12 +72,8 @@ userImg!:any
 
 this.commentSub =this._CommentsService.getPostComment(this.postId).subscribe({
   next:(res)=>{
-    console.log(res.comments);
+    // console.log(res.comments);
     this.commentsList.set(res.comments.reverse())
-
-  },
-  error:(err)=>{
-    console.log(err);
 
   }
 })
@@ -91,13 +87,9 @@ this.commentSub =this._CommentsService.getPostComment(this.postId).subscribe({
     this._CommentsService.creatComment(this.commentGroup.value).subscribe({
       next:(res)=>{
 
-        console.log(res);
+        // console.log(res);
         this.commentsList.set(res.comments.reverse())
         this.commentGroup.get('content')?.reset()
-
-      },
-      error:(err)=>{
-        console.log(err);
 
       }
     })
@@ -114,10 +106,6 @@ this.commentSub =this._CommentsService.getPostComment(this.postId).subscribe({
 
 
 
-      },
-      error:(err)=>{
-        console.log(err);
-
       }
     })
   }
@@ -128,11 +116,7 @@ this.commentSub =this._CommentsService.getPostComment(this.postId).subscribe({
 
     this._CommentsService.updateComment(id , this.UpdatecommentGroup.value).subscribe({
       next:(res)=>{
-        console.log(res);
-
-
-
-
+        // console.log(res);
 if (res.message === 'success') {
   // this.commentsList.set(res.comments)
   this.commentContent.set(res.comment.content)
@@ -143,10 +127,6 @@ if (res.message === 'success') {
 }
 
 
-
-      },
-      error:(err)=>{
-        console.log(err);
 
       }
     })

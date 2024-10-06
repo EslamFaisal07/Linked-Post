@@ -1,10 +1,9 @@
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { UsersService } from './../../core/services/users.service';
-import { Component, inject, OnDestroy } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-// import { UsersService } from '../../core/services/users.service';
+import { Subscription } from 'rxjs';
+import { UsersService } from './../../core/services/users.service';
 
 
 @Component({
@@ -14,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent   implements OnDestroy  {
+export class LoginComponent    {
 
 
 loginSubscribe!:Subscription
@@ -39,7 +38,7 @@ loginSubmit():void{
   if (this.loginForm.valid) {
     this.loginSubscribe = this._UsersService.signIn(this.loginForm.value).subscribe({
       next:(res)=>{
-        console.log(res);
+        // console.log(res);
 
         if (res.message == 'success') {
           localStorage.setItem("userToken" , res.token)
@@ -51,10 +50,6 @@ loginSubmit():void{
         }
 
 
-
-      },
-      error : (err)=>{
-        console.log(err);
 
       }
     })
@@ -69,9 +64,6 @@ loginSubmit():void{
 
 
 
-ngOnDestroy(): void {
-    this.loginSubscribe?.unsubscribe()
-}
 
 
 }

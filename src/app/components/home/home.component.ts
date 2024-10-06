@@ -56,7 +56,7 @@ export class HomeComponent  implements OnInit , OnDestroy{
         this.isLoading = false;
       },
       error: (error) => {
-        console.error(error);
+        // console.error(error);
         this.isLoading = false;
       }
     });
@@ -75,12 +75,8 @@ export class HomeComponent  implements OnInit , OnDestroy{
 
     this.allPostsSub = this._PostsService.getAllPosts(1).subscribe({
       next:(res)=>{
-        console.log(res.posts)
+        // console.log(res.posts)
         this.postList.set(res.posts.reverse())
-
-      },
-      error:(err)=>{
-        console.log(err);
 
       }
     })
@@ -112,7 +108,7 @@ formData.append('image' , this.savedFile!)
 
     this.creatPosts = this._PostsService.createPost(formData).subscribe({
       next:(res)=>{
-        console.log(res);
+        // console.log(res);
         this._ToastrService.success('Done')
 
 

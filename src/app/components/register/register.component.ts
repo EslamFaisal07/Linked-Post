@@ -12,14 +12,12 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent  implements OnDestroy {
+export class RegisterComponent   {
 
 
   isLoading :WritableSignal<boolean> = signal(false)
   msgError :WritableSignal<boolean> = signal(false)
 
-  // isLoading :boolean = false
-  // msgError:boolean = false
 
 
 
@@ -59,22 +57,24 @@ registerSubmit():void{
 
 if (this.registerForm.valid) {
 
-  // this.isLoading=true
+
 
   this.isLoading.set(true)
   this.signUpSubscribe  = this._UsersService.signUp(this.registerForm.value).subscribe({
     next:(res)=>{
-      console.log(res);
+      // console.log(res);
       this.isLoading.set(false)
-      // this.isLoading=false
+
 
       if (res.message == 'success') {
+
+
 this._Router.navigate(['/login'])
       }
 
     },
     error:(err)=>{
-      console.log(err);
+      // console.log(err);
       this.isLoading.set(false)
       this.msgError.set(err.error.message);
 
@@ -93,7 +93,7 @@ else{
 
 
 
-// console.log(this.registerForm.value);
+
 
 
 }
@@ -101,7 +101,5 @@ else{
 
 
 
-ngOnDestroy(): void {
-    this.signUpSubscribe?.unsubscribe()
-}
+
 }

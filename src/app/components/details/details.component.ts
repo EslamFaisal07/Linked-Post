@@ -27,12 +27,8 @@ ngOnInit(): void {
         let idPost = p.get('id')
        this.detailsSub =  this._PostsService.getSinglePost(idPost).subscribe({
           next: (res) => {
-            console.log(res.post)
+            // console.log(res.post)
             this.detailsList=res.post
-
-          },
-          error: (err) => {
-            console.log(err);
 
           }
         })

@@ -57,25 +57,17 @@ ngOnInit(): void {
 
 this.dataSub = this._UsersService.getLogedUserData().subscribe({
   next: (data) => {
-    console.log(data.user);
+    // console.log(data.user);
     this.dataList.set(data.user)
     this._UsersService.userPhoto.set(data.user.photo)
-
-  },
-  error:(err)=>{
-    console.log(err);
 
   }
 })
 
 this.profileSub =    this._PostsService.getMyPosts().subscribe({
       next: (res)=>{
-        console.log(res.posts);
+        // console.log(res.posts);
         this.profileList.set(res.posts)
-
-      },
-      error:(err)=>{
-        console.log(err);
 
       }
     })
@@ -84,14 +76,10 @@ this.profileSub =    this._PostsService.getMyPosts().subscribe({
 deletePost(id:string):void{
   this._PostsService.deletePost(id).subscribe({
     next:(res)=>{
-      console.log(res);
+      // console.log(res);
       this.ngOnInit()
       this._ToastrService.error("Your Post Deleted Successfully")
 
-
-    },
-    error:(err)=>{
-      console.log(err);
 
     }
   })
@@ -115,18 +103,14 @@ uploadPhoto():void{
 
 this.uploadPhotoSub = this._UsersService.uploadProfilePhoto(formData).subscribe({
   next:(res)=>{
-    console.log(res);
+    // console.log(res);
 
     if (res.message == 'success') {
       this.ngOnInit()
-      this._ToastrService.error("Success Change ")
+      this._ToastrService.success("Success Change ")
 
 
     }
-
-  },
-  error:(err)=>{
-    console.log(err);
 
   }
 })
@@ -163,7 +147,7 @@ formData.append('image' , this.savedFile!)
 
   this.creatPosts = this._PostsService.createPost(formData).subscribe({
     next:(res)=>{
-      console.log(res);
+      // console.log(res);
     }
   })
 

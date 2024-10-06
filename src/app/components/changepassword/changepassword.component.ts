@@ -51,10 +51,6 @@ this.changeSubscribe = this._UsersService.changePassword(this.changeForm.value).
 
     }
 
-  },
-  error: (err) => {
-    console.log(err);
-
   }
 })
 }else{

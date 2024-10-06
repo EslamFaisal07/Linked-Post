@@ -37,8 +37,8 @@
 
       @if(userId == comment.commentCreator._id){
        <div class="flex items-center justify-start gap-4 mt-2">
-        <a #update class="block text-blue-500" >Edit</a>
-        <a (click)="delete(comment._id)" class="block text-red-500" >Delete</a>
+        <a #update class="block text-blue-500 cursor-pointer" >Edit</a>
+        <a (click)="delete(comment._id)" class="block text-red-500 cursor-pointer" >Delete</a>
        </div>
         @defer (on interaction(update)) {
 

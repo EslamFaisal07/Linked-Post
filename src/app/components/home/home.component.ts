@@ -8,6 +8,7 @@ import { Ipost } from '../../core/interfaces/ipost';
 import { PostsService } from '../../core/services/posts.service';
 import { CommentsComponent } from "../../shared/ui/comments/comments.component";
 import { ToastrService } from 'ngx-toastr';
+import { UsersService } from '../../core/services/users.service';
 
 
 @Component({
@@ -25,7 +26,9 @@ export class HomeComponent  implements OnInit , OnDestroy{
   modelClose:boolean=false
   content:string = ""
   savedFile!:File|null
-
+  private readonly _PostsService = inject(PostsService)
+  private readonly _ToastrService = inject(ToastrService)
+  private readonly _UsersService = inject(UsersService)
 
 
   private currentPage = 1;
@@ -66,8 +69,8 @@ export class HomeComponent  implements OnInit , OnDestroy{
 
 
 
-  private readonly _PostsService = inject(PostsService)
-  private readonly _ToastrService = inject(ToastrService)
+
+  dataSub!:Subscription
 
 
 
@@ -80,6 +83,17 @@ export class HomeComponent  implements OnInit , OnDestroy{
 
       }
     })
+
+
+    this.dataSub = this._UsersService.getLogedUserData().subscribe({
+      next: (data) => {
+
+        this._UsersService.userPhoto.set(data.user.photo)
+
+      }
+    })
+
+
   }
 
   close():void{
@@ -121,6 +135,7 @@ formData.append('image' , this.savedFile!)
 ngOnDestroy(): void {
     this.allPostsSub?.unsubscribe()
     this.creatPosts?.unsubscribe()
+    this.dataSub?.unsubscribe()
 }
 
 

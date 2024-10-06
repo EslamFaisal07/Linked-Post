@@ -1,7 +1,6 @@
-import { Component, computed, inject, OnInit, Signal, WritableSignal } from '@angular/core';
-import { UsersService } from '../../core/services/users.service';
+import { Component, computed, inject, Signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { UsersService } from '../../core/services/users.service';
 
 @Component({
   selector: 'app-nav-blank',
@@ -12,10 +11,14 @@ import { Subscription } from 'rxjs';
 })
 export class NavBlankComponent {
 
+
+
+
 _UsersService = inject(UsersService)
 
 
-userAccountPhoto:Signal<string>=computed(()=>this._UsersService.userPhoto())
+userPhoto:Signal<string>=computed(()=>this._UsersService.userPhoto())
+
 
 
 

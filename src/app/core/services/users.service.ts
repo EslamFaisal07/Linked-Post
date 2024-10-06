@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal, WritableSignal } from '@angular/core';
+import { inject, Injectable, OnInit, signal, WritableSignal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../environment/environment';
 import { jwtDecode } from 'jwt-decode';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class UsersService implements OnInit {
 
   userData : any = null
   userPhoto:WritableSignal<string>=signal('');
@@ -17,17 +17,17 @@ export class UsersService {
 private readonly _HttpClient = inject(HttpClient)
 private readonly _Router = inject(Router)
 
-constructor(private _HttpClient1:HttpClient){
+
+ngOnInit(): void {
   this.getLogedUserData().subscribe({
     next: (res) => {
-      console.log(res.user.photo);
+ 
       this.userPhoto.set(res.user.photo)
-      
+
 
     }
   })
 }
-
 
 saveUserData(){
   if (localStorage.getItem('userToken') !== null) {

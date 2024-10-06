@@ -7,7 +7,7 @@
 
 <form [formGroup]="registerForm"  (ngSubmit)="registerSubmit()">
   <div class="my-3">
-    <label for="name" class="block  text-sm font-medium text-gray-600 dark:text-white">Name</label>
+    <label for="name" class="block text-sm font-medium text-gray-600 dark:text-white">Name</label>
     <input formControlName="name" type="text" id="name" placeholder="Type Your Name..." class="    bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 </div>
 
@@ -18,7 +18,7 @@
 @if (registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)) {
 
 
-  <div class="p-4  mt-0 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+  <div class="p-4 mt-0 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
 
     @if (registerForm.get('name')?.getError('required')) {
 
@@ -63,7 +63,7 @@
 @if (registerForm.get('email')?.errors && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)) {
 
 
-  <div class="p-4  mt-0 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+  <div class="p-4 mt-0 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
 
     @if (registerForm.get('email')?.getError('required')) {
 
@@ -102,7 +102,7 @@
 
 
 @if (registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)) {
-  <div class="p-4  mt-0 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+  <div class="p-4 mt-0 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
 
     @if (registerForm.get('password')?.getError('required')) {
 
@@ -141,9 +141,9 @@
 
 
 @if (  registerForm.getError("mismatch") && (registerForm.get("rePassword")?.touched || registerForm.get("rePassword")?.dirty)  ) {
-  <div class="p-4  mt-0 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+  <div class="p-4 mt-0 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
 
-  <p class="alert alert-danger m-0 w-100">Password confirmation is incorrect</p>
+  <p class="m-0 alert alert-danger w-100">Password confirmation is incorrect</p>
   </div>
 
 
@@ -166,7 +166,7 @@
 </div>
 
 
-<div class="mt-6 flex gap-4 items-center">
+<div class="flex items-center gap-4 mt-6">
   <div>
     <input formControlName="gender" id="default-radio-1" type="radio" value="male" name="gender" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
     <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Male</label>
@@ -178,7 +178,7 @@
 </div>
 
 
-<button   [disabled]="registerForm.invalid  || isLoading()"     class="bg-blue-600 text-white px-4 py-2 my-5 rounded-md border ">SignUp
+<button   [disabled]="registerForm.invalid  || isLoading()"     class="px-4 py-2 my-5 text-white bg-blue-600 border rounded-md ">SignUp
 
 
   @if (isLoading()) {
@@ -187,10 +187,12 @@
   </button>
 
   @if (msgError()) {
-    <p class="alert alert-danger my-3 ">{{msgError()}}</p>
+    <p class="my-3 alert alert-danger ">{{msgError()}}</p>
 
   }
 
+
+  <a class="text-gray-400 " > Have an Account? <span routerLink="/login" class="text-blue-600 cursor-pointer ">login</span> </a>
 
 
 

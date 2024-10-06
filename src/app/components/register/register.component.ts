@@ -2,13 +2,13 @@ import { Component, inject, OnDestroy, signal, WritableSignal } from '@angular/c
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { UsersService } from '../../core/services/users.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule ],
+  imports: [ReactiveFormsModule , RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })

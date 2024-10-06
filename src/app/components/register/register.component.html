@@ -1,0 +1,201 @@
+
+  <h1 class="text-blue-700 text-center  font-[100px] text-[50px] mt-16">Linked Posts</h1>
+
+
+<section class="my-8 w-[60%] max-sm:w-[90%] mx-auto bg-white rounded-lg shadow-lg p-6">
+  <h2 class="text-blue-700  mb-7 font-[90px] text-[35px] ">Register Now </h2>
+
+<form [formGroup]="registerForm"  (ngSubmit)="registerSubmit()">
+  <div class="my-3">
+    <label for="name" class="block  text-sm font-medium text-gray-600 dark:text-white">Name</label>
+    <input formControlName="name" type="text" id="name" placeholder="Type Your Name..." class="    bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+</div>
+
+
+
+
+
+@if (registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)) {
+
+
+  <div class="p-4  mt-0 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+
+    @if (registerForm.get('name')?.getError('required')) {
+
+      <span class="font-medium">Name is Required</span>
+    }
+    @else if (registerForm.get('name')?.getError("minlength")) {
+
+
+      <span class="font-medium">Name must be at least 3 Characters</span>
+
+    }
+    @else if (registerForm.get('name')?.getError("maxlength")) {
+
+
+      <span class="font-medium">Name should be less than  20 Characters</span>
+
+    }
+
+
+
+
+
+
+  </div>
+
+
+
+
+}
+
+
+
+
+
+<div class="my-3">
+  <label for="email" class="block mb-2 text-sm font-medium text-gray-600 dark:text-white">E-Mail</label>
+  <input formControlName="email" type="text" id="email" placeholder="Type Your Name..." class="    bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+</div>
+
+
+
+@if (registerForm.get('email')?.errors && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)) {
+
+
+  <div class="p-4  mt-0 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+
+    @if (registerForm.get('email')?.getError('required')) {
+
+      <span class="font-medium">Email is Required</span>
+    }
+    @else if (registerForm.get('email')?.getError("email")) {
+
+
+      <span class="font-medium">Enter Valid Email</span>
+
+    }
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+}
+
+
+
+
+
+
+
+<div class="my-3">
+  <label for="password" class="block mb-2 text-sm font-medium text-gray-600 dark:text-white">Password</label>
+  <input formControlName="password" type="password" id="password" placeholder="Type Your Name..." class="    bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+</div>
+
+
+@if (registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)) {
+  <div class="p-4  mt-0 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+
+    @if (registerForm.get('password')?.getError('required')) {
+
+      <span class="font-medium">password is Required</span>
+    }
+    @else if (registerForm.get('password')?.getError("pattern")) {
+
+
+      <span class="font-medium">The password must contain an uppercase letter, lowercase letters, special characters like #$%, and numbers</span>
+
+    }
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+}
+
+
+
+
+
+
+
+<div class="my-3">
+  <label for="rePass" class="block mb-2 text-sm font-medium text-gray-600 dark:text-white">RePassword</label>
+  <input formControlName="rePassword" type="password" id="rePass" placeholder="Type Your Name..." class="    bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+</div>
+
+
+@if (  registerForm.getError("mismatch") && (registerForm.get("rePassword")?.touched || registerForm.get("rePassword")?.dirty)  ) {
+  <div class="p-4  mt-0 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+
+  <p class="alert alert-danger m-0 w-100">Password confirmation is incorrect</p>
+  </div>
+
+
+  }
+
+
+
+
+
+
+
+<div class="relative mt-6">
+  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+    </svg>
+  </div>
+
+  <input formControlName="dateOfBirth" id="default-datepicker" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+</div>
+
+
+<div class="mt-6 flex gap-4 items-center">
+  <div>
+    <input formControlName="gender" id="default-radio-1" type="radio" value="male" name="gender" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Male</label>
+  </div>
+  <div>
+    <input formControlName="gender" id="default-radio-2" type="radio" value="female" name="gender" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Female</label>
+  </div>
+</div>
+
+
+<button   [disabled]="registerForm.invalid  || isLoading()"     class="bg-blue-600 text-white px-4 py-2 my-5 rounded-md border ">SignUp
+
+
+  @if (isLoading()) {
+    <span><i class="fas fa-spin fa-spinner"></i></span>
+  }
+  </button>
+
+  @if (msgError()) {
+    <p class="alert alert-danger my-3 ">{{msgError()}}</p>
+
+  }
+
+
+
+
+</form>
+
+</section>
+
+

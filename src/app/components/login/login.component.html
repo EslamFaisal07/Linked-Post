@@ -1,0 +1,105 @@
+
+<h1 class="text-blue-700 text-center  font-[100px] text-[50px] mt-16">Linked Posts</h1>
+
+
+<section class="my-8 w-[60%] max-sm:w-[90%] mx-auto bg-white rounded-lg shadow-lg p-6">
+  <h2 class="text-blue-700  mb-7 font-[90px] text-[35px] ">login Now </h2>
+
+
+
+<form  [formGroup]="loginForm"  (ngSubmit)="loginSubmit()">
+
+
+
+
+
+<div class="my-3">
+  <label for="email" class="block mb-2 text-sm font-medium text-gray-600 dark:text-white">E-Mail</label>
+  <input formControlName="email" type="text" id="email" placeholder="Type Your Name..." class="    bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+</div>
+
+
+
+ @if (loginForm.get('email')?.errors && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)) {
+
+
+  <div class="p-4  mt-0 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+
+    @if (loginForm.get('email')?.getError('required')) {
+
+      <span class="font-medium">Email is Required</span>
+    }
+    @else if (loginForm.get('email')?.getError("email")) {
+
+
+      <span class="font-medium">Enter Valid Email</span>
+
+    }
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+}
+
+
+
+
+
+
+
+<div class="my-3">
+  <label for="password" class="block mb-2 text-sm font-medium text-gray-600 dark:text-white">Password</label>
+  <input formControlName="password" type="password" id="password" placeholder="Type Your Name..." class="    bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+</div>
+
+
+ @if (loginForm.get('password')?.errors && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)) {
+  <div class="p-4  mt-0 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+
+    @if (loginForm.get('password')?.getError('required')) {
+
+      <span class="font-medium">password is Required</span>
+    }
+    @else if (loginForm.get('password')?.getError("pattern")) {
+
+
+      <span class="font-medium">The password must contain an uppercase letter, lowercase letters, special characters like #$%, and numbers</span>
+
+    }
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+}
+
+
+
+<button       class="bg-blue-600 text-white px-4 py-2 my-5 rounded-md border ">LogIn </button>
+
+
+<p class="text-gray-500">Not Registered? <span routerLink="/signup" class="text-blue-700 cursor-pointer font-bold">Creat account</span></p>
+
+<!-- [disabled]="loginForm.invalid"  -->
+
+
+</form>
+
+</section>
+
+
